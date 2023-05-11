@@ -9,7 +9,7 @@
     </parent>
     <groupId>me.dev</groupId>
     <artifactId>motospring</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>0.0.2</version>
     <packaging>pom</packaging>
     <name>motospring</name>
     <description>motospring</description>
@@ -48,6 +48,6 @@
 
     <scm>
         <developerConnection>scm:git:https://github.com/stimon27/motospring.git</developerConnection>
-      <tag>HEAD</tag>
+      <tag>motospring-0.0.2</tag>
   </scm>
 </project>
