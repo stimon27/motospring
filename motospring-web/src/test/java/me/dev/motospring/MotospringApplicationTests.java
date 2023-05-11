@@ -1,4 +1,4 @@
-package motospring;
+package me.dev.motospring;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
