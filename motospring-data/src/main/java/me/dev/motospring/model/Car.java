@@ -1,6 +1,6 @@
 package me.dev.motospring.model;
 
-public class Car {
+public class Car extends BaseEntity {
     private String model;
     private Make make;
     private RacingTeam racingTeam;

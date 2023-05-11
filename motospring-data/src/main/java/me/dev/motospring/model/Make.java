@@ -1,6 +1,6 @@
 package me.dev.motospring.model;
 
-public class Make {
+public class Make extends BaseEntity {
     private String name;
 
     public String getName() {

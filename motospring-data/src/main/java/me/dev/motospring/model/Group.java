@@ -1,6 +1,6 @@
 package me.dev.motospring.model;
 
-public class Group {
+public class Group extends BaseEntity {
     private String name;
     private String nationality;
 
