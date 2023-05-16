@@ -4,9 +4,6 @@ import me.dev.motospring.model.RacingTeam;
 
 import java.util.Set;
 
-public interface RacingTeamService {
+public interface RacingTeamService extends CrudService<RacingTeam, Long> {
     RacingTeam findByName(String name);
-    RacingTeam findById(Long id);
-    RacingTeam save(RacingTeam racingTeam);
-    Set<RacingTeam> findAll();
 }
