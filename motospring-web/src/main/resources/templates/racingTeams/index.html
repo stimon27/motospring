@@ -6,5 +6,23 @@
 </head>
 <body>
     <h1 th:text="'List of Racing Teams'">List of Racing Teams...</h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Nationality</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="racingteam : ${racingteams}">
+            <td th:text="${racingteam.id}" >1</td>
+            <td th:text="${racingteam.name}">dummytext</td>
+            <td th:text="${racingteam.nationality}">dummytext</td>
+        </tr>
+        </tbody>
+    </table>
+
 </body>
 </html>
