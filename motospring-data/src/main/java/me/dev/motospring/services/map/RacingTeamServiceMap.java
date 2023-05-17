@@ -3,9 +3,11 @@ package me.dev.motospring.services.map;
 import me.dev.motospring.model.RacingTeam;
 import me.dev.motospring.services.RacingTeamService;
 import org.hibernate.cfg.NotYetImplementedException;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
+@Service
 public class RacingTeamServiceMap extends AbstractMapService<RacingTeam, Long> implements RacingTeamService {
     @Override
     public Set<RacingTeam> findAll() {

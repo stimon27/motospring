@@ -2,9 +2,11 @@ package me.dev.motospring.services.map;
 
 import me.dev.motospring.model.Car;
 import me.dev.motospring.services.CrudService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
+@Service
 public class CarServiceMap extends AbstractMapService<Car, Long> implements CrudService<Car, Long> {
     @Override
     public Set<Car> findAll() {

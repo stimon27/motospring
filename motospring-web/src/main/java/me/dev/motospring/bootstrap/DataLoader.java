@@ -4,8 +4,6 @@ import me.dev.motospring.model.Garage;
 import me.dev.motospring.model.RacingTeam;
 import me.dev.motospring.services.GarageService;
 import me.dev.motospring.services.RacingTeamService;
-import me.dev.motospring.services.map.GarageServiceMap;
-import me.dev.motospring.services.map.RacingTeamServiceMap;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -15,9 +13,9 @@ public class DataLoader implements CommandLineRunner {
     private final RacingTeamService racingTeamService;
     private final GarageService garageService;
 
-    public DataLoader() {
-        racingTeamService = new RacingTeamServiceMap();
-        garageService = new GarageServiceMap();
+    public DataLoader(RacingTeamService racingTeamService, GarageService garageService) {
+        this.racingTeamService = racingTeamService;
+        this.garageService = garageService;
     }
 
     @Override

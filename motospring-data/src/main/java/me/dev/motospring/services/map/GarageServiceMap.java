@@ -2,9 +2,11 @@ package me.dev.motospring.services.map;
 
 import me.dev.motospring.model.Garage;
 import me.dev.motospring.services.GarageService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
+@Service
 public class GarageServiceMap extends AbstractMapService<Garage, Long> implements GarageService {
     @Override
     public Set<Garage> findAll() {
