@@ -1,11 +1,12 @@
 package me.dev.motospring.services.map;
 
 import me.dev.motospring.model.RacingTeam;
-import me.dev.motospring.services.CrudService;
+import me.dev.motospring.services.RacingTeamService;
+import org.hibernate.cfg.NotYetImplementedException;
 
 import java.util.Set;
 
-public class RacingTeamServiceMap extends AbstractMapService<RacingTeam, Long> implements CrudService<RacingTeam, Long> {
+public class RacingTeamServiceMap extends AbstractMapService<RacingTeam, Long> implements RacingTeamService {
     @Override
     public Set<RacingTeam> findAll() {
         return super.findAll();
@@ -29,5 +30,10 @@ public class RacingTeamServiceMap extends AbstractMapService<RacingTeam, Long> i
     @Override
     public void deleteById(Long id) {
         super.deleteById(id);
+    }
+
+    @Override
+    public RacingTeam findByName(String name) {
+        throw new NotYetImplementedException();
     }
 }
