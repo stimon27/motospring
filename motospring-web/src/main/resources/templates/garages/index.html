@@ -2,9 +2,27 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>List of Garages</title>
+    <title>Racing Teams List</title>
 </head>
 <body>
-    <h1 th:text="'List of Garages'">List of Garages...</h1>
+<h1 th:text="'List of Garages'">List of Garages...</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Nationality</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="garage : ${garages}">
+        <td th:text="${garage.id}" >1</td>
+        <td th:text="${garage.name}">dummytext</td>
+        <td th:text="${garage.nationality}">dummytext</td>
+    </tr>
+    </tbody>
+</table>
+
 </body>
 </html>
