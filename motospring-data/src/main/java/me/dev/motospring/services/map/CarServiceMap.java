@@ -20,7 +20,7 @@ public class CarServiceMap extends AbstractMapService<Car, Long> implements Crud
 
     @Override
     public Car save(Car car) {
-        return super.save(car.getId(), car);
+        return super.save(car);
     }
 
     @Override

@@ -21,7 +21,7 @@ public class RacingTeamServiceMap extends AbstractMapService<RacingTeam, Long> i
 
     @Override
     public RacingTeam save(RacingTeam racingTeam) {
-        return super.save(racingTeam.getId(), racingTeam);
+        return super.save(racingTeam);
     }
 
     @Override

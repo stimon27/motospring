@@ -20,7 +20,7 @@ public class GarageServiceMap extends AbstractMapService<Garage, Long> implement
 
     @Override
     public Garage save(Garage garage) {
-        return super.save(garage.getId(), garage);
+        return super.save(garage);
     }
 
     @Override
