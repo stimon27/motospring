@@ -1,12 +1,10 @@
 package me.dev.motospring.bootstrap;
 
-import me.dev.motospring.model.Car;
-import me.dev.motospring.model.Garage;
-import me.dev.motospring.model.Make;
-import me.dev.motospring.model.RacingTeam;
+import me.dev.motospring.model.*;
 import me.dev.motospring.services.GarageService;
 import me.dev.motospring.services.MakeService;
 import me.dev.motospring.services.RacingTeamService;
+import me.dev.motospring.services.StyleService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -18,15 +16,25 @@ public class DataLoader implements CommandLineRunner {
     private final RacingTeamService racingTeamService;
     private final GarageService garageService;
     private final MakeService makeService;
+    private final StyleService styleService;
 
-    public DataLoader(RacingTeamService racingTeamService, GarageService garageService, MakeService makeService) {
+    public DataLoader(RacingTeamService racingTeamService, GarageService garageService, MakeService makeService, StyleService styleService) {
         this.racingTeamService = racingTeamService;
         this.garageService = garageService;
         this.makeService = makeService;
+        this.styleService = styleService;
     }
 
     @Override
     public void run(String... args) throws Exception {
+        int count = makeService.findAll().size();
+
+        if (count == 0) {
+            loadData();
+        }
+    }
+
+    private void loadData() {
         Make honda = new Make();
         honda.setName("Honda");
 
@@ -36,6 +44,18 @@ public class DataLoader implements CommandLineRunner {
         chevrolet.setName("Chevrolet");
 
         Make savedChevroletMake = makeService.save(chevrolet);
+
+        Style style1 = new Style();
+        style1.setTag("Muscle");
+        Style savedStyle1 = styleService.save(style1);
+
+        Style style2 = new Style();
+        style2.setTag("JDM");
+        Style savedStyle2 = styleService.save(style2);
+
+        Style style3 = new Style();
+        style3.setTag("Classics");
+        Style savedStyle3 = styleService.save(style3);
 
         RacingTeam racingTeam1 = new RacingTeam();
         racingTeam1.setName("Nitrofans");
@@ -72,12 +92,14 @@ public class DataLoader implements CommandLineRunner {
         Garage garage1 = new Garage();
         garage1.setName("Mighty pistons");
         garage1.setNationality("USA");
+        garage1.getStyles().add(style1);
 
         garageService.save(garage1);
 
         Garage garage2 = new Garage();
         garage2.setName("Graffiti masters");
         garage2.setNationality("Belgium");
+        garage2.getStyles().add(style2);
 
         garageService.save(garage2);
 
