@@ -1,5 +1,8 @@
 package me.dev.motospring.model;
 
+import javax.persistence.MappedSuperclass;
+
+@MappedSuperclass
 public class Group extends BaseEntity {
     private String name;
     private String nationality;

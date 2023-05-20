@@ -1,8 +1,17 @@
 package me.dev.motospring.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "cars")
 public class Car extends BaseEntity {
+    @Column(name = "model")
     private String model;
+    @ManyToOne
+    @JoinColumn(name = "make_id")
     private Make make;
+    @ManyToOne
+    @JoinColumn(name = "racingteam_id")
     private RacingTeam racingTeam;
 
     public String getModel() {

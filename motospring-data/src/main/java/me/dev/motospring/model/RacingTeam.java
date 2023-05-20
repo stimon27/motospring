@@ -1,14 +1,21 @@
 package me.dev.motospring.model;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
+@Entity
+@Table(name = "racingteams")
 public class RacingTeam extends Group {
 
+    @Column(name = "racing_discipline")
     private String racingDiscipline;
+    @Column(name = "creation_date")
     private LocalDate creationDate;
+    @Column(name = "motto")
     private String motto;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "racingTeam")
     private Set<Car> cars = new HashSet<>();
 
     public String getRacingDiscipline() {
