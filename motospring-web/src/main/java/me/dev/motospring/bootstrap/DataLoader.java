@@ -1,8 +1,10 @@
 package me.dev.motospring.bootstrap;
 
 import me.dev.motospring.model.Garage;
+import me.dev.motospring.model.Make;
 import me.dev.motospring.model.RacingTeam;
 import me.dev.motospring.services.GarageService;
+import me.dev.motospring.services.MakeService;
 import me.dev.motospring.services.RacingTeamService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -12,14 +14,26 @@ public class DataLoader implements CommandLineRunner {
 
     private final RacingTeamService racingTeamService;
     private final GarageService garageService;
+    private final MakeService makeService;
 
-    public DataLoader(RacingTeamService racingTeamService, GarageService garageService) {
+    public DataLoader(RacingTeamService racingTeamService, GarageService garageService, MakeService makeService) {
         this.racingTeamService = racingTeamService;
         this.garageService = garageService;
+        this.makeService = makeService;
     }
 
     @Override
     public void run(String... args) throws Exception {
+        Make honda = new Make();
+        honda.setName("Honda");
+
+        Make saveHondaMake = makeService.save(honda);
+
+        Make chevrolet = new Make();
+        chevrolet.setName("Chevrolet");
+
+        Make savedChevroletMake = makeService.save(chevrolet);
+
         RacingTeam racingTeam1 = new RacingTeam();
         racingTeam1.setName("Nitrofans");
         racingTeam1.setNationality("USA");
