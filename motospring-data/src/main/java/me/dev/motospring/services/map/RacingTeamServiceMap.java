@@ -1,6 +1,9 @@
 package me.dev.motospring.services.map;
 
+import me.dev.motospring.model.Car;
 import me.dev.motospring.model.RacingTeam;
+import me.dev.motospring.services.CarService;
+import me.dev.motospring.services.MakeService;
 import me.dev.motospring.services.RacingTeamService;
 import org.hibernate.cfg.NotYetImplementedException;
 import org.springframework.stereotype.Service;
@@ -9,6 +12,15 @@ import java.util.Set;
 
 @Service
 public class RacingTeamServiceMap extends AbstractMapService<RacingTeam, Long> implements RacingTeamService {
+
+    private final MakeService makeService;
+    private final CarService carService;
+
+    public RacingTeamServiceMap(MakeService makeService, CarService carService) {
+        this.makeService = makeService;
+        this.carService = carService;
+    }
+
     @Override
     public Set<RacingTeam> findAll() {
         return super.findAll();
@@ -21,7 +33,28 @@ public class RacingTeamServiceMap extends AbstractMapService<RacingTeam, Long> i
 
     @Override
     public RacingTeam save(RacingTeam racingTeam) {
-        return super.save(racingTeam);
+        if (racingTeam != null) {
+            if (racingTeam.getCars() != null) {
+                racingTeam.getCars().forEach(car -> {
+                    if (car.getMake() != null) {
+                        if (car.getMake().getId() == null) {
+                            car.setMake(makeService.save(car.getMake()));
+                        }
+                    } else {
+                        throw new RuntimeException("Make is required");
+                    }
+
+                    if (car.getId() == null) {
+                        Car savedCar = carService.save(car);
+                        car.setId(savedCar.getId());
+                    }
+                });
+            }
+            return super.save(racingTeam);
+        } else {
+            return null;
+        }
+
     }
 
     @Override

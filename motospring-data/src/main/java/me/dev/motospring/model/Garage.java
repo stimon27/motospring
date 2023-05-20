@@ -1,10 +1,11 @@
 package me.dev.motospring.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class Garage extends Group {
 
-    private Set<Style> styles;
+    private Set<Style> styles = new HashSet<>();
 
     public Set<Style> getStyles() {
         return styles;

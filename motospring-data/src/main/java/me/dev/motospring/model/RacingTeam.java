@@ -1,6 +1,7 @@
 package me.dev.motospring.model;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Set;
 
 public class RacingTeam extends Group {
@@ -8,7 +9,7 @@ public class RacingTeam extends Group {
     private String racingDiscipline;
     private LocalDate creationDate;
     private String motto;
-    private Set<Car> cars;
+    private Set<Car> cars = new HashSet<>();
 
     public String getRacingDiscipline() {
         return racingDiscipline;
