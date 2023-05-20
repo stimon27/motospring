@@ -19,4 +19,9 @@ public class RacingTeamController {
         model.addAttribute("racingteams", racingTeamService.findAll());
         return "racingTeams/index";
     }
+
+    @RequestMapping("/find")
+    public String findRacingTeams() {
+        return "notimplemented";
+    }
 }

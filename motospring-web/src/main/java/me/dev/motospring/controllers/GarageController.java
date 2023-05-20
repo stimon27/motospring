@@ -6,7 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/garages")
 public class GarageController {
     private final GarageService garageService;
 
@@ -14,7 +13,7 @@ public class GarageController {
         this.garageService = garageService;
     }
 
-    @RequestMapping({"", "/", "/index", "/index.html"})
+    @RequestMapping({"/garages", "/garages/", "/garages.html", "garages/index", "garages/index.html"})
     String listGarages(Model model) {
         model.addAttribute("garages", garageService.findAll());
 
