@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import java.util.Set;
 
 @Service
-public class StyleServiceMap extends AbstractMapService<Style, Long> implements StyleService {
+public class StyleMapService extends AbstractMapService<Style, Long> implements StyleService {
     @Override
     public Set<Style> findAll() {
         return super.findAll();

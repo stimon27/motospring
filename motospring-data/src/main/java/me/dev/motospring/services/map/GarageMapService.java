@@ -9,11 +9,11 @@ import org.springframework.stereotype.Service;
 import java.util.Set;
 
 @Service
-public class GarageServiceMap extends AbstractMapService<Garage, Long> implements GarageService {
+public class GarageMapService extends AbstractMapService<Garage, Long> implements GarageService {
 
     private final StyleService styleService;
 
-    public GarageServiceMap(StyleService styleService) {
+    public GarageMapService(StyleService styleService) {
         this.styleService = styleService;
     }
 

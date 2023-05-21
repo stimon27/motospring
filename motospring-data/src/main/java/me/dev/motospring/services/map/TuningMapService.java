@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import java.util.Set;
 
 @Service
-public class TuningServiceMap extends AbstractMapService<Tuning, Long> implements TuningService {
+public class TuningMapService extends AbstractMapService<Tuning, Long> implements TuningService {
     @Override
     public Set<Tuning> findAll() {
         return super.findAll();

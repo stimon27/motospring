@@ -11,12 +11,12 @@ import org.springframework.stereotype.Service;
 import java.util.Set;
 
 @Service
-public class RacingTeamServiceMap extends AbstractMapService<RacingTeam, Long> implements RacingTeamService {
+public class RacingTeamMapService extends AbstractMapService<RacingTeam, Long> implements RacingTeamService {
 
     private final MakeService makeService;
     private final CarService carService;
 
-    public RacingTeamServiceMap(MakeService makeService, CarService carService) {
+    public RacingTeamMapService(MakeService makeService, CarService carService) {
         this.makeService = makeService;
         this.carService = carService;
     }
