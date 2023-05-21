@@ -1,10 +1,7 @@
 package me.dev.motospring.bootstrap;
 
 import me.dev.motospring.model.*;
-import me.dev.motospring.services.GarageService;
-import me.dev.motospring.services.MakeService;
-import me.dev.motospring.services.RacingTeamService;
-import me.dev.motospring.services.StyleService;
+import me.dev.motospring.services.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -17,12 +14,14 @@ public class DataLoader implements CommandLineRunner {
     private final GarageService garageService;
     private final MakeService makeService;
     private final StyleService styleService;
+    private final TuningService tuningService;
 
-    public DataLoader(RacingTeamService racingTeamService, GarageService garageService, MakeService makeService, StyleService styleService) {
+    public DataLoader(RacingTeamService racingTeamService, GarageService garageService, MakeService makeService, StyleService styleService, TuningService tuningService) {
         this.racingTeamService = racingTeamService;
         this.garageService = garageService;
         this.makeService = makeService;
         this.styleService = styleService;
+        this.tuningService = tuningService;
     }
 
     @Override
@@ -53,9 +52,9 @@ public class DataLoader implements CommandLineRunner {
         style2.setTag("JDM");
         Style savedStyle2 = styleService.save(style2);
 
-        Style style3 = new Style();
-        style3.setTag("Classics");
-        Style savedStyle3 = styleService.save(style3);
+//        Style style3 = new Style();
+//        style3.setTag("Classics");
+//        Style savedStyle3 = styleService.save(style3);
 
         RacingTeam racingTeam1 = new RacingTeam();
         racingTeam1.setName("Nitrofans");
@@ -86,6 +85,18 @@ public class DataLoader implements CommandLineRunner {
         racingTeam2.getCars().add(car2);
 
         racingTeamService.save(racingTeam2);
+
+        Tuning tuning1 = new Tuning();
+        tuning1.setDate(LocalDate.now());
+        tuning1.setCar(car1);
+        tuning1.setDescription("Chip tuning");
+
+//        Tuning tuning2 = new Tuning();
+//        tuning2.setDate(LocalDate.of(2023, 4, 4));
+//        tuning2.setCar(car2);
+//        tuning2.setDescription("Replace exhaust");
+
+        tuningService.save(tuning1);
 
         System.out.println("Loaded Racing Teams...");
 
