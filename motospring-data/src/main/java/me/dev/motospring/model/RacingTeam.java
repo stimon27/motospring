@@ -11,7 +11,6 @@ import java.util.Set;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Entity
 @Table(name = "racingteams")
 public class RacingTeam extends Group {
