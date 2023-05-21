@@ -2,9 +2,11 @@ package me.dev.motospring.services.map;
 
 import me.dev.motospring.model.Tuning;
 import me.dev.motospring.services.TuningService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
+@Service
 public class TuningServiceMap extends AbstractMapService<Tuning, Long> implements TuningService {
     @Override
     public Set<Tuning> findAll() {
