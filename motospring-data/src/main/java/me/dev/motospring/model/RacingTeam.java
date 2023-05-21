@@ -1,13 +1,29 @@
 package me.dev.motospring.model;
 
+import lombok.*;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "racingteams")
 public class RacingTeam extends Group {
+
+    @Builder
+    public RacingTeam(Long id, String name, String nationality, String racingDiscipline, LocalDate creationDate, String motto, Set<Car> cars) {
+        super(id, name, nationality);
+        this.racingDiscipline = racingDiscipline;
+        this.creationDate = creationDate;
+        this.motto = motto;
+        this.cars = cars;
+    }
 
     @Column(name = "racing_discipline")
     private String racingDiscipline;
@@ -17,36 +33,4 @@ public class RacingTeam extends Group {
     private String motto;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "racingTeam")
     private Set<Car> cars = new HashSet<>();
-
-    public String getRacingDiscipline() {
-        return racingDiscipline;
-    }
-
-    public void setRacingDiscipline(String racingDiscipline) {
-        this.racingDiscipline = racingDiscipline;
-    }
-
-    public LocalDate getCreationDate() {
-        return creationDate;
-    }
-
-    public void setCreationDate(LocalDate creationDate) {
-        this.creationDate = creationDate;
-    }
-
-    public String getMotto() {
-        return motto;
-    }
-
-    public void setMotto(String motto) {
-        this.motto = motto;
-    }
-
-    public Set<Car> getCars() {
-        return cars;
-    }
-
-    public void setCars(Set<Car> cars) {
-        this.cars = cars;
-    }
 }

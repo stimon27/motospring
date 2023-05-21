@@ -1,9 +1,16 @@
 package me.dev.motospring.model;
 
+import lombok.*;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "garages")
 public class Garage extends Group {
@@ -13,12 +20,4 @@ public class Garage extends Group {
             joinColumns = @JoinColumn(name = "garage_id"),
             inverseJoinColumns = @JoinColumn(name = "style_id"))
     private Set<Style> styles = new HashSet<>();
-
-    public Set<Style> getStyles() {
-        return styles;
-    }
-
-    public void setStyles(Set<Style> styles) {
-        this.styles = styles;
-    }
 }
