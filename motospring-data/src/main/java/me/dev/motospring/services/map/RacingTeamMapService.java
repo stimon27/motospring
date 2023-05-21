@@ -5,7 +5,6 @@ import me.dev.motospring.model.RacingTeam;
 import me.dev.motospring.services.CarService;
 import me.dev.motospring.services.MakeService;
 import me.dev.motospring.services.RacingTeamService;
-import org.hibernate.cfg.NotYetImplementedException;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
@@ -71,6 +70,10 @@ public class RacingTeamMapService extends AbstractMapService<RacingTeam, Long> i
 
     @Override
     public RacingTeam findByName(String name) {
-        throw new NotYetImplementedException();
+
+        return this.findAll().stream()
+                .filter(racingTeam -> racingTeam.getName().equalsIgnoreCase(name))
+                .findFirst()
+                .orElse(null);
     }
 }
