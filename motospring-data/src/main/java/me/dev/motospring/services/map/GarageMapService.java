@@ -4,11 +4,13 @@ import me.dev.motospring.model.Garage;
 import me.dev.motospring.model.Style;
 import me.dev.motospring.services.GarageService;
 import me.dev.motospring.services.StyleService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
+@Profile({"default", "map"})
 public class GarageMapService extends AbstractMapService<Garage, Long> implements GarageService {
 
     private final StyleService styleService;

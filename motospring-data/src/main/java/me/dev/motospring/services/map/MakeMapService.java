@@ -2,11 +2,13 @@ package me.dev.motospring.services.map;
 
 import me.dev.motospring.model.Make;
 import me.dev.motospring.services.MakeService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
+@Profile({"default", "map"})
 public class MakeMapService extends AbstractMapService<Make, Long> implements MakeService {
     @Override
     public Set<Make> findAll() {

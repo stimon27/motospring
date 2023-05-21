@@ -6,11 +6,13 @@ import me.dev.motospring.services.CarService;
 import me.dev.motospring.services.MakeService;
 import me.dev.motospring.services.RacingTeamService;
 import org.hibernate.cfg.NotYetImplementedException;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
+@Profile({"default", "map"})
 public class RacingTeamMapService extends AbstractMapService<RacingTeam, Long> implements RacingTeamService {
 
     private final MakeService makeService;
