@@ -10,12 +10,17 @@ import javax.persistence.Table;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Entity
 @Table(name = "makes")
 public class Make extends BaseEntity {
     @Column(name = "name")
     private String name;
+
+    @Builder
+    public Make(Long id, String name) {
+        super(id);
+        this.name = name;
+    }
 
     @Override
     public String toString() {
