@@ -9,11 +9,14 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
 @RequestMapping("/racingteams")
 public class RacingTeamController {
+    private static final String VIEWS_RACING_TEAM_CREATE_OR_UPDATE_FORM = "racingTeams/createOrUpdateRacingTeamForm";
+
     private final RacingTeamService racingTeamService;
 
     public RacingTeamController(RacingTeamService racingTeamService) {
@@ -33,32 +36,60 @@ public class RacingTeamController {
 
     @GetMapping
     public String processFindForm(RacingTeam racingTeam, BindingResult result, Model model) {
-        // allow parameterless GET request for /racingteams to return all records
         if (racingTeam.getName() == null) {
             racingTeam.setName(""); // empty string signifies broadest possible search
         }
-
-        // find racing teams by name
         List<RacingTeam> results = racingTeamService.findAllByNameLike("%" + racingTeam.getName() + "%");
         if (results.isEmpty()) {
-            // no racing teams found
             result.rejectValue("name", "notFound", "not found");
             return "racingTeams/findRacingTeams";
         } else if (results.size() == 1) {
-            // 1 racing team found
             racingTeam = results.iterator().next();
             return "redirect:/racingteams/" + racingTeam.getId();
         } else {
-            // multiple owners found
             model.addAttribute("selections", results);
             return "racingTeams/racingTeamsList";
         }
     }
 
     @GetMapping("/{racingTeamId}")
-    public ModelAndView showRacingTeam(@PathVariable("racingTeamId") Long racingTeamId) {
+    public ModelAndView showRacingTeam(@PathVariable Long racingTeamId) {
         ModelAndView mav = new ModelAndView("/racingTeams/racingTeamDetails");
         mav.addObject(racingTeamService.findById(racingTeamId));
         return mav;
+    }
+
+    @GetMapping("/new")
+    public String initCreationForm(Model model) {
+        model.addAttribute("racingTeam", RacingTeam.builder().build());
+        return VIEWS_RACING_TEAM_CREATE_OR_UPDATE_FORM;
+    }
+
+    @PostMapping("/new")
+    public String processCreationForm(@Valid RacingTeam racingTeam, BindingResult result) {
+        if (result.hasErrors()) {
+            return VIEWS_RACING_TEAM_CREATE_OR_UPDATE_FORM;
+        }
+
+        RacingTeam savedRacingTeam = racingTeamService.save(racingTeam);
+        return "redirect:/racingteams/" + savedRacingTeam.getId();
+    }
+
+    @GetMapping("/{racingTeamId}/edit")
+    public String initUpdateRacingTeamForm(@PathVariable Long racingTeamId, Model model) {
+        model.addAttribute(racingTeamService.findById(racingTeamId));
+        return VIEWS_RACING_TEAM_CREATE_OR_UPDATE_FORM;
+    }
+
+    @PostMapping("/{racingTeamId}/edit")
+    public String processUpdateRacingTeamForm(@Valid RacingTeam racingTeam, BindingResult result,
+                                         @PathVariable Long racingTeamId) {
+        if (result.hasErrors()) {
+            return VIEWS_RACING_TEAM_CREATE_OR_UPDATE_FORM;
+        }
+
+        racingTeam.setId(racingTeamId);
+        RacingTeam savedRacingTeam = racingTeamService.save(racingTeam);
+        return "redirect:/racingteams/" + savedRacingTeam.getId();
     }
 }

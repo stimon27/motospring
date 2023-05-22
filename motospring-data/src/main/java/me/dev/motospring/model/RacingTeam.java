@@ -1,6 +1,7 @@
 package me.dev.motospring.model;
 
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -27,6 +28,7 @@ public class RacingTeam extends Group {
     @Column(name = "racing_discipline")
     private String racingDiscipline;
     @Column(name = "creation_date")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate creationDate;
     @Column(name = "motto")
     private String motto;

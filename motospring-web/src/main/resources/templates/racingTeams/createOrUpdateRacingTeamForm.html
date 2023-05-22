@@ -1,0 +1,30 @@
+<html xmlns:th="https://www.thymeleaf.org"
+  th:replace="~{fragments/layout :: layout (~{::body},'racingteams')}">
+
+<body>
+
+  <h2>Racing Team</h2>
+  <form th:object="${racingTeam}" class="form-horizontal" id="add-racingteam-form" method="post">
+    <div class="form-group has-feedback">
+      <input
+        th:replace="~{fragments/inputField :: input ('Name', 'name', 'text')}" />
+      <input
+        th:replace="~{fragments/inputField :: input ('Nationality', 'nationality', 'text')}" />
+      <input
+        th:replace="~{fragments/inputField :: input ('Racing Discipline', 'racingDiscipline', 'text')}" />
+      <input
+        th:replace="~{fragments/inputField :: input ('Creation Date', 'creationDate', 'date')}" />
+      <input
+        th:replace="~{fragments/inputField :: input ('Motto', 'motto', 'text')}" />
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button
+          th:with="text=${racingTeam['new']} ? 'Add Racing Team' : 'Update Racing Team'"
+          class="btn btn-primary" type="submit" th:text="${text}">Add
+          Racing Team</button>
+      </div>
+    </div>
+  </form>
+</body>
+</html>

@@ -5,6 +5,7 @@ import me.dev.motospring.services.RacingTeamService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -19,8 +20,9 @@ import java.util.Set;
 import static org.hamcrest.Matchers.*;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -73,5 +75,51 @@ class RacingTeamControllerTest {
         mockMvc.perform(get("/racingteams"))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(view().name("redirect:/racingteams/1"));
+    }
+
+    @Test
+    void initCreationForm() throws Exception {
+        mockMvc.perform(get("/racingteams/new"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("racingTeams/createOrUpdateRacingTeamForm"))
+                .andExpect(model().attributeExists("racingTeam"));
+
+        verifyNoInteractions(racingTeamService);
+    }
+
+    @Test
+    void processCreationForm() throws Exception {
+        when(racingTeamService.save(ArgumentMatchers.any())).thenReturn(RacingTeam.builder().id(1l).build());
+
+        mockMvc.perform(post("/racingteams/new"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(view().name("redirect:/racingteams/1"))
+                .andExpect(model().attributeExists("racingTeam"));
+
+        verify(racingTeamService).save(ArgumentMatchers.any());
+    }
+
+    @Test
+    void initUpdateRacingTeamForm() throws Exception {
+        when(racingTeamService.findById(anyLong())).thenReturn(RacingTeam.builder().id(1l).build());
+
+        mockMvc.perform(get("/racingteams/1/edit"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("racingTeams/createOrUpdateRacingTeamForm"))
+                .andExpect(model().attributeExists("racingTeam"));
+
+        verify(racingTeamService).findById(1L);
+    }
+
+    @Test
+    void processUpdateRacingTeamForm() throws Exception {
+        when(racingTeamService.save(ArgumentMatchers.any())).thenReturn(RacingTeam.builder().id(1l).build());
+
+        mockMvc.perform(post("/racingteams/1/edit"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(view().name("redirect:/racingteams/1"))
+                .andExpect(model().attributeExists("racingTeam"));
+
+        verify(racingTeamService).save(ArgumentMatchers.any());
     }
 }
