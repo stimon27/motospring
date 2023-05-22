@@ -39,7 +39,7 @@ public class RacingTeamController {
         }
 
         // find racing teams by name
-        List<RacingTeam> results = racingTeamService.findAllByNameLike(racingTeam.getName());
+        List<RacingTeam> results = racingTeamService.findAllByNameLike("%" + racingTeam.getName() + "%");
         if (results.isEmpty()) {
             // no racing teams found
             result.rejectValue("name", "notFound", "not found");
