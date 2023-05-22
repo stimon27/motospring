@@ -14,7 +14,8 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.*;
+import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.verifyNoInteractions;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -69,5 +70,15 @@ class RacingTeamControllerTest {
                 .andExpect(view().name("notimplemented"));
 
         verifyNoInteractions(racingTeamService);
+    }
+
+    @Test
+    void displayRacingTeam() throws Exception {
+        when(racingTeamService.findById(anyLong())).thenReturn(RacingTeam.builder().id(1L).build());
+
+        mockMvc.perform(get("/racingteams/777"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("/racingTeams/racingTeamDetails"))
+                .andExpect(model().attribute("racingTeam", hasProperty("id", is(1L))));
     }
 }
