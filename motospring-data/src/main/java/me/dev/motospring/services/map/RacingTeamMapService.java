@@ -8,6 +8,7 @@ import me.dev.motospring.services.RacingTeamService;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -75,5 +76,11 @@ public class RacingTeamMapService extends AbstractMapService<RacingTeam, Long> i
                 .filter(racingTeam -> racingTeam.getName().equalsIgnoreCase(name))
                 .findFirst()
                 .orElse(null);
+    }
+
+    @Override
+    public List<RacingTeam> findAllByNameLike(String name) {
+        // TODO: Implement!
+        return null;
     }
 }

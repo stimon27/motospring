@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -57,5 +58,10 @@ public class RacingTeamJpaService implements RacingTeamService {
     @Override
     public RacingTeam findByName(String name) {
         return racingTeamRepository.findByName(name);
+    }
+
+    @Override
+    public List<RacingTeam> findAllByNameLike(String name) {
+        return racingTeamRepository.findAllByNameLike(name);
     }
 }
