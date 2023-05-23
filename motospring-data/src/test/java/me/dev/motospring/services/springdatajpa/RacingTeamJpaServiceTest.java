@@ -2,8 +2,6 @@ package me.dev.motospring.services.springdatajpa;
 
 import me.dev.motospring.exceptions.NotFoundException;
 import me.dev.motospring.model.RacingTeam;
-import me.dev.motospring.repositories.CarRepository;
-import me.dev.motospring.repositories.MakeRepository;
 import me.dev.motospring.repositories.RacingTeamRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -27,10 +25,6 @@ class RacingTeamJpaServiceTest {
     public static final String EXAMPLE_NAME = "example_name";
     @Mock
     RacingTeamRepository racingTeamRepository;
-    @Mock
-    CarRepository carRepository;
-    @Mock
-    MakeRepository makeRepository;
     @InjectMocks
     RacingTeamJpaService service;
 
@@ -66,9 +60,7 @@ class RacingTeamJpaServiceTest {
     void findByIdNotFound() {
         when(racingTeamRepository.findById(anyLong())).thenReturn(Optional.empty());
 
-        assertThrows(NotFoundException.class, () -> {
-            RacingTeam racingTeam = service.findById(1L);
-        });
+        assertThrows(NotFoundException.class, () -> service.findById(1L));
     }
 
     @Test
