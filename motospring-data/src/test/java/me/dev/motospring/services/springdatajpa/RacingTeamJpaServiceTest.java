@@ -1,5 +1,6 @@
 package me.dev.motospring.services.springdatajpa;
 
+import me.dev.motospring.exceptions.NotFoundException;
 import me.dev.motospring.model.RacingTeam;
 import me.dev.motospring.repositories.CarRepository;
 import me.dev.motospring.repositories.MakeRepository;
@@ -64,8 +65,10 @@ class RacingTeamJpaServiceTest {
     @Test
     void findByIdNotFound() {
         when(racingTeamRepository.findById(anyLong())).thenReturn(Optional.empty());
-        RacingTeam racingTeam = service.findById(1L);
-        assertNull(racingTeam);
+
+        assertThrows(NotFoundException.class, () -> {
+            RacingTeam racingTeam = service.findById(1L);
+        });
     }
 
     @Test

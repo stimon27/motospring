@@ -1,5 +1,6 @@
 package me.dev.motospring.services.springdatajpa;
 
+import me.dev.motospring.exceptions.NotFoundException;
 import me.dev.motospring.model.Make;
 import me.dev.motospring.repositories.MakeRepository;
 import me.dev.motospring.services.MakeService;
@@ -7,6 +8,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -28,7 +30,13 @@ public class MakeJpaService implements MakeService {
 
     @Override
     public Make findById(Long id) {
-        return makeRepository.findById(id).orElse(null);
+        Optional<Make> makeOptional = makeRepository.findById(id);
+
+        if (makeOptional.isEmpty()) {
+            throw new NotFoundException("Make with id=" + id + " could not be found.");
+        }
+
+        return makeOptional.get();
     }
 
     @Override

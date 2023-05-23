@@ -1,5 +1,6 @@
 package me.dev.motospring.services.springdatajpa;
 
+import me.dev.motospring.exceptions.NotFoundException;
 import me.dev.motospring.model.RacingTeam;
 import me.dev.motospring.repositories.CarRepository;
 import me.dev.motospring.repositories.MakeRepository;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -37,7 +39,13 @@ public class RacingTeamJpaService implements RacingTeamService {
 
     @Override
     public RacingTeam findById(Long id) {
-        return racingTeamRepository.findById(id).orElse(null);
+        Optional<RacingTeam> racingTeamOptional = racingTeamRepository.findById(id);
+
+        if (racingTeamOptional.isEmpty()) {
+            throw new NotFoundException("Racing Team with id=" + id + " could not be found.");
+        }
+
+        return racingTeamOptional.get();
     }
 
     @Override

@@ -1,5 +1,6 @@
 package me.dev.motospring.services.springdatajpa;
 
+import me.dev.motospring.exceptions.NotFoundException;
 import me.dev.motospring.model.Garage;
 import me.dev.motospring.repositories.GarageRepository;
 import me.dev.motospring.services.GarageService;
@@ -7,6 +8,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -28,7 +30,13 @@ public class GarageJpaService implements GarageService {
 
     @Override
     public Garage findById(Long id) {
-        return garageRepository.findById(id).orElse(null);
+        Optional<Garage> garageOptional = garageRepository.findById(id);
+
+        if (garageOptional.isEmpty()) {
+            throw new NotFoundException("Garage with id=" + id + " could not be found.");
+        }
+
+        return garageOptional.get();
     }
 
     @Override

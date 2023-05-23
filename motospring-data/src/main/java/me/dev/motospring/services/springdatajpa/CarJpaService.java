@@ -1,5 +1,6 @@
 package me.dev.motospring.services.springdatajpa;
 
+import me.dev.motospring.exceptions.NotFoundException;
 import me.dev.motospring.model.Car;
 import me.dev.motospring.repositories.CarRepository;
 import me.dev.motospring.services.CarService;
@@ -7,6 +8,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -28,7 +30,13 @@ public class CarJpaService implements CarService {
 
     @Override
     public Car findById(Long id) {
-        return carRepository.findById(id).orElse(null);
+        Optional<Car> carOptional = carRepository.findById(id);
+
+        if (carOptional.isEmpty()) {
+            throw new NotFoundException("Car with id=" + id + " could not be found.");
+        }
+
+        return carOptional.get();
     }
 
     @Override

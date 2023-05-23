@@ -1,5 +1,6 @@
 package me.dev.motospring.services.springdatajpa;
 
+import me.dev.motospring.exceptions.NotFoundException;
 import me.dev.motospring.model.Tuning;
 import me.dev.motospring.repositories.TuningRepository;
 import me.dev.motospring.services.TuningService;
@@ -7,6 +8,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -28,7 +30,13 @@ public class TuningJpaService implements TuningService {
 
     @Override
     public Tuning findById(Long id) {
-        return tuningRepository.findById(id).orElse(null);
+        Optional<Tuning> tuningOptional = tuningRepository.findById(id);
+
+        if (tuningOptional.isEmpty()) {
+            throw new NotFoundException("Tuning service with id=" + id + " could not be found.");
+        }
+
+        return tuningOptional.get();
     }
 
     @Override
