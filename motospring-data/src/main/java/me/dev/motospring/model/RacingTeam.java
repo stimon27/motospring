@@ -22,7 +22,10 @@ public class RacingTeam extends Group {
         this.racingDiscipline = racingDiscipline;
         this.creationDate = creationDate;
         this.motto = motto;
-        this.cars = cars;
+
+        if(cars != null) {
+            this.cars = cars;
+        }
     }
 
     @Column(name = "racing_discipline")
@@ -34,4 +37,36 @@ public class RacingTeam extends Group {
     private String motto;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "racingTeam")
     private Set<Car> cars = new HashSet<>();
+
+    public Car searchCar(String model, boolean ignoreNew) {
+        model = model.toLowerCase();
+        for (Car car : getCars()) {
+            if (!ignoreNew || !car.isNew()) {
+                String compModel = car.getModel();
+                compModel = compModel == null ? "" : compModel.toLowerCase();
+                if (compModel.equals(model)) {
+                    return car;
+                }
+            }
+        }
+        return null;
+    }
+
+    public Car searchCar(Long id) {
+        for (Car car : getCars()) {
+            if (!car.isNew()) {
+                Long compId = car.getId();
+                if (compId.equals(id)) {
+                    return car;
+                }
+            }
+        }
+        return null;
+    }
+
+    public void addCar(Car car) {
+        if (car.isNew()) {
+            cars.add(car);
+        }
+    }
 }

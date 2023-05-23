@@ -10,7 +10,6 @@ import java.util.Set;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Entity
 @Table(name = "cars")
 public class Car extends BaseEntity {
@@ -24,4 +23,13 @@ public class Car extends BaseEntity {
     private RacingTeam racingTeam;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "car")
     private Set<Tuning> tunings = new HashSet<>();
+
+    @Builder
+    public Car(Long id, String model, Make make, RacingTeam racingTeam, Set<Tuning> tunings) {
+        super(id);
+        this.model = model;
+        this.make = make;
+        this.racingTeam = racingTeam;
+        this.tunings = tunings;
+    }
 }
