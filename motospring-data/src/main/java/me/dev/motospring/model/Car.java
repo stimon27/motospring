@@ -35,4 +35,9 @@ public class Car extends BaseEntity {
             this.tunings = tunings;
         }
     }
+
+    @Override
+    public String toString() {
+        return make + " " + model;
+    }
 }

@@ -5,7 +5,7 @@
 
   <h2>
     <th:block th:if="${car['new']}">New </th:block>
-    Pet
+    Car
   </h2>
   <form th:object="${car}" class="form-horizontal" method="post">
     <input type="hidden" name="id" th:value="*{id}" />
@@ -25,7 +25,7 @@
       <div class="col-sm-offset-2 col-sm-10">
         <button
           th:with="text=${car['new']} ? 'Add Car' : 'Update Car'"
-          class="btn btn-primary" type="submit" th:text="${text}">Add
+          class="btn my-btn" type="submit" th:text="${text}">Add
           Car</button>
       </div>
     </div>

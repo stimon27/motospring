@@ -11,7 +11,7 @@
   
     <table class="table table-striped" th:object="${racingTeam}">
       <tr>
-        <th>Name</th>
+        <th class="racingteam-details-odd">Name</th>
         <td><b th:text="*{name}"></b></td>
       </tr>
       <tr>
@@ -19,7 +19,7 @@
         <td><b th:text="*{nationality}"></b></td>
       </tr>
       <tr>
-        <th>Racing Discipline</th>
+        <th class="racingteam-details-odd">Racing Discipline</th>
         <td><b th:text="*{racingDiscipline}"></b></td>
       </tr>
       <tr>
@@ -27,14 +27,14 @@
         <td><b th:text="*{creationDate}"></b></td>
       </tr>
       <tr>
-        <th>Motto</th>
+        <th class="racingteam-details-odd">Motto</th>
         <td><b th:text="*{motto}"></b></td>
       </tr>
     </table>
   
-    <a th:href="@{__${racingTeam.id}__/edit}" class="btn btn-primary">Edit
+    <a th:href="@{__${racingTeam.id}__/edit}" class="btn my-btn">Edit
       Racing Team</a>
-    <a th:href="@{__${racingTeam.id}__/cars/new}" class="btn btn-primary">Add
+    <a th:href="@{__${racingTeam.id}__/cars/new}" class="btn my-btn">Add
       New Car</a>
   
     <br />

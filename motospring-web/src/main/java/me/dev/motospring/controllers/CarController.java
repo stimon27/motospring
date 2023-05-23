@@ -67,6 +67,7 @@ public class CarController {
             return VIEWS_CARS_CREATE_OR_UPDATE_FORM;
         }
 
+        car.setRacingTeam(racingTeam);
         carService.save(car);
         return "redirect:/racingteams/" + racingTeam.getId();
     }
@@ -86,6 +87,7 @@ public class CarController {
         }
 
         racingTeam.addCar(car);
+        car.setRacingTeam(racingTeam);
         carService.save(car);
         return "redirect:/racingteams/{racingTeamId}";
     }

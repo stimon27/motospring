@@ -8,8 +8,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="shortcut icon" type="image/x-icon" th:href="@{/resources/images/favicon.png}">
-
     <title>Motospring</title>
 
     <!--[if lt IE 9]>
@@ -18,6 +16,7 @@
     <![endif]-->
 
     <link rel="stylesheet" th:href="@{/resources/css/motospring.css}"/>
+      <link rel="stylesheet" th:href="@{/resources/css/styles.css}"/>
 
   </head>
 
@@ -35,7 +34,7 @@
               </button>
           </div>
           <div class="navbar-collapse collapse" id="main-navbar">
-              <ul class="nav navbar-nav navbar-right">
+              <ul class="nav navbar-nav navbar-right nav-list">
   
                   <li th:fragment="menuItem (path,active,title,glyph,text)" class="active" th:class="${active==menu ? 'active' : ''}">
                       <a th:href="@{__${path}__}" th:title="${title}">
@@ -70,18 +69,7 @@
   </nav>
   <div class="container-fluid">
       <div class="container xd-container">
-  
           <th:block th:include="${template}"/>
-
-        <br/>
-        <br/>
-        <div class="container">
-          <div class="row">
-            <div class="col-12 text-center">
-              <img src="../static/resources/images/spring-pivotal-logo.png" th:src="@{/resources/images/spring-pivotal-logo.png}"
-                alt="Sponsored by Pivotal"/></div>
-          </div>
-        </div>
       </div>
   </div>
 

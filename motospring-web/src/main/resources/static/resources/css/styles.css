@@ -1,0 +1,54 @@
+.error-box {
+    margin-top: 50px;
+}
+
+.error-text {
+    text-align: center;
+    font-family: Verdana, monospace;
+}
+
+tr:nth-child(2n-1) td {
+    color: #0A0A0A;
+}
+
+tr:nth-child(2n) td {
+    color: #E5E4E2;
+}
+
+.racingteam-details-odd {
+    color: #0A0A0A;
+}
+
+.nav-list li:first-child {
+    display: none;
+}
+
+.my-btn {
+    background-color: #E5E4E2;
+    color: #0A0A0A;
+}
+
+.my-btn:hover {
+    background-color: #FF7F50;
+}
+
+.my-text-input, .my-select, .my-date-input {
+    width: 120px;
+    height: 2em;
+}
+
+.my-text-input#description {
+    width: 240px;
+}
+
+.my-select {
+    color: #0A0A0A;
+}
+
+.my-date-input {
+    padding-right: 0!important;
+}
+
+.prev-tuning-th {
+    color: #0A0A0A;
+}

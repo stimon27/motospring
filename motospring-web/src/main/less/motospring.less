@@ -13,49 +13,48 @@
  */
 @icon-font-path:    "../../webjars/bootstrap/fonts/";
 
-@color-violet:      #8f00ff;
-@color-fuchsia:     #FF0080;
-@color-obsidian:    #2e293a;
+@color-coral:       #FF7F50;
+@color-shadow:    #0A0A0A;
 @color-metal:       #818589;
 @color-chalk:       #E5E4E2;
 
-@body-bg:                           @color-chalk;
-@text-color:                        @color-obsidian;
-@link-color:                        @color-fuchsia;
-@link-hover-color:                  @color-fuchsia;
+@body-bg:                           @color-shadow;
+@text-color:                        @color-chalk;
+@link-color:                        @color-coral;
+@link-hover-color:                  @color-coral;
 
-@navbar-default-link-color:         @color-chalk;
-@navbar-default-link-active-color:  @color-chalk;
-@navbar-default-link-hover-color:   @color-chalk;
-@navbar-default-link-hover-bg:      @color-violet;
-@navbar-default-toggle-icon-bar-bg: @color-chalk;
+@navbar-default-link-color:         @color-shadow;
+@navbar-default-link-active-color:  @color-shadow;
+@navbar-default-link-hover-color:   @color-shadow;
+@navbar-default-link-hover-bg:      @color-coral;
+@navbar-default-toggle-icon-bar-bg: @color-shadow;
 @navbar-default-toggle-hover-bg:    transparent;
-@navbar-default-link-active-bg:     @color-violet;
+@navbar-default-link-active-bg:     @color-coral;
 
 @border-radius-base:             0;
 @border-radius-large:            0;
 @border-radius-small:            0;
 
-@btn-default-color:              @color-chalk;
-@btn-default-bg:                 @color-obsidian;
-@btn-default-border:             @color-violet;
+@btn-default-color:              @color-shadow;
+@btn-default-bg:                 @color-chalk;
+@btn-default-border:             @color-coral;
 
-@nav-tabs-active-link-hover-color:        @color-chalk;
-@nav-tabs-active-link-hover-bg:           @color-obsidian;
-@nav-tabs-active-link-hover-border-color: @color-obsidian;
-@nav-tabs-border-color:                   @color-obsidian;
+@nav-tabs-active-link-hover-color:        @color-shadow;
+@nav-tabs-active-link-hover-bg:           @color-chalk;
+@nav-tabs-active-link-hover-border-color: @color-chalk;
+@nav-tabs-border-color:                   @color-chalk;
 
-@pagination-active-bg:                    @color-obsidian;
-@pagination-active-border:                @color-violet;
-@table-border-color:                      @color-obsidian;
+@pagination-active-bg:                    @color-chalk;
+@pagination-active-border:                @color-coral;
+@table-border-color:                      @color-chalk;
 
 .table > thead > tr > th {
-  background-color: lighten(@color-obsidian, 3%);
+  background-color: lighten(@color-shadow, 3%);
   color: @color-chalk;
 }
 
 .table-filter {
-  background-color: @color-obsidian;
+  background-color: @color-shadow;
   padding: 9px 12px;
 }
 
@@ -76,8 +75,8 @@
   &:active,
   &.active,
   .open .dropdown-toggle& {
-    background-color: @color-obsidian;
-    border-color: @color-obsidian;
+    background-color: @color-shadow;
+    border-color: @color-shadow;
   }
 }
 
@@ -125,8 +124,8 @@ h1 {
 }
 
 .splash {
-  background: @color-violet;
-  color: @color-obsidian;
+  background: @color-coral;
+  color: @color-shadow;
   display: none;
 }
 
@@ -196,12 +195,12 @@ table td.action-column {
 }
 
 .container-details-table th {
-  background-color: lighten(@color-obsidian, 3%);
+  background-color: lighten(@color-shadow, 3%);
   color: @color-chalk;
 }
 
 .status-help-content-table td {
-  color: @color-obsidian;
+  color: @color-shadow;
 }
 
 .alert-success {
@@ -231,7 +230,7 @@ table td.action-column {
 }
 
 hr {
-  border-top: 1px dotted @color-obsidian;
+  border-top: 1px dotted @color-shadow;
 }
 
 @import "typography.less";

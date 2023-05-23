@@ -5,7 +5,7 @@
 
   <h2>
     <th:block th:if="${tuning['new']}">New </th:block>
-    Visit
+    Tuning Service
   </h2>
 
   <b>Car</b>
@@ -33,19 +33,20 @@
     </div>
 
     <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
+      <div class="col-sm-offset-9 col-sm-3">
         <input type="hidden" name="carId" th:value="${car.id}" />
-        <button class="btn btn-primary" type="submit">Add Tuning Service</button>
+        <button class="btn my-btn" type="submit">Add Tuning Service</button>
       </div>
     </div>
   </form>
 
   <br />
   <b>Previous Tuning Services</b>
+  <br />
   <table class="table table-striped">
     <tr>
-      <th>Date</th>
-      <th>Description</th>
+      <th class="prev-tuning-th">Date</th>
+      <th class="prev-tuning-th">Description</th>
     </tr>
     <tr th:if="${!tuning['new']}" th:each="tuning : ${car.tunings}">
       <td th:text="${#temporals.format(tuning.date, 'yyyy-MM-dd')}"></td>
