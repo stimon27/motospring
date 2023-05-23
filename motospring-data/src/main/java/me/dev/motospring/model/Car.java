@@ -30,6 +30,9 @@ public class Car extends BaseEntity {
         this.model = model;
         this.make = make;
         this.racingTeam = racingTeam;
-        this.tunings = tunings;
+
+        if (tunings == null || tunings.size() > 0) {
+            this.tunings = tunings;
+        }
     }
 }
