@@ -18,7 +18,7 @@
         <module>motospring-web</module>
     </modules>
     <properties>
-        <java.version>11</java.version>
+        <java.version>17</java.version>
     </properties>
 
     <build>
@@ -41,6 +41,14 @@
                 <configuration>
                     <goals>install</goals>
                     <autoVersionSubmodules>true</autoVersionSubmodules>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.heroku.sdk</groupId>
+                <artifactId>heroku-maven-plugin</artifactId>
+                <version>3.0.7</version>
+                <configuration>
+                    <appName>mighty-oasis-51457</appName>
                 </configuration>
             </plugin>
         </plugins>

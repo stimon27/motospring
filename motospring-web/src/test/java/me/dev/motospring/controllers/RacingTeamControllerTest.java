@@ -53,7 +53,7 @@ class RacingTeamControllerTest {
 
         mockMvc.perform(get("/racingteams/777"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("/racingTeams/racingTeamDetails"))
+                .andExpect(view().name("racingTeams/racingTeamDetails"))
                 .andExpect(model().attribute("racingTeam", hasProperty("id", is(1L))));
     }
 

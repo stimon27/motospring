@@ -7,7 +7,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -53,10 +52,9 @@ public class RacingTeamController {
     }
 
     @GetMapping("/{racingTeamId}")
-    public ModelAndView showRacingTeam(@PathVariable Long racingTeamId) {
-        ModelAndView mav = new ModelAndView("/racingTeams/racingTeamDetails");
-        mav.addObject(racingTeamService.findById(racingTeamId));
-        return mav;
+    public String showRacingTeam(@PathVariable Long racingTeamId, Model model) {
+        model.addAttribute("racingTeam", racingTeamService.findById(racingTeamId));
+        return "racingTeams/racingTeamDetails";
     }
 
     @GetMapping("/new")

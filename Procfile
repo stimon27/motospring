@@ -1,0 +1,1 @@
+web: java $JAVA_OPTS -jar motospring-web/target/motospring-web-0.0.3-SNAPSHOT.jar --server.port=$PORT
