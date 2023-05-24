@@ -39,7 +39,6 @@ public class TuningController {
 
     @GetMapping("/racingteams/*/cars/{carId}/tunings/new")
     public String initNewTuningForm(@PathVariable("carId") Long carId, Model model) {
-        System.out.println("Hello");
         return "cars/createOrUpdateTuningForm";
     }
 
