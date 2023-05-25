@@ -121,7 +121,7 @@ public class DataLoader implements CommandLineRunner {
         racingTeam4.setNationality("Italy");
         racingTeam4.setRacingDiscipline("Time attacks");
         racingTeam4.setCreationDate(LocalDate.of(2010, 6, 30));
-        racingTeam4.setMotto("Faster than stopwatch");
+        racingTeam4.setMotto("Pursuing luxury");
         Make make4 = new Make();
         make4.setName("Lamborghini");
         makeService.save(make4);
