@@ -4,7 +4,7 @@
     <parent>
         <groupId>me.dev</groupId>
         <artifactId>motospring</artifactId>
-        <version>1.0.0</version>
+        <version>1.0.1</version>
     </parent>
 
     <artifactId>motospring-web</artifactId>
@@ -23,7 +23,7 @@
         <dependency>
             <groupId>me.dev</groupId>
             <artifactId>motospring-data</artifactId>
-            <version>0.0.3-SNAPSHOT</version>
+            <version>1.0.1</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

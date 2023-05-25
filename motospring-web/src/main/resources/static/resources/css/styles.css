@@ -59,3 +59,30 @@ tr:nth-child(2n) td {
 .prev-tuning-th {
     color: #0A0A0A;
 }
+
+.welcome-title, .welcome-subtitle {
+    text-align: center;
+}
+
+.welcome-subtitle {
+    margin-bottom: 40px;
+}
+
+.info-box {
+    min-height: 200px;
+    border: 2px solid #00FF7F;
+    padding: 20px;
+}
+
+.welcome-cyber-text {
+    font-family: "Source Code Pro", "monospace";
+    color: #00FF7F;
+}
+
+.version-text {
+    text-align: center;
+}
+
+hr {
+    background-color: #00FF7F;
+}
